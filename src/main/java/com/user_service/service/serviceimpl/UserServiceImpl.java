@@ -5,6 +5,7 @@ import com.user_service.exception.UserNotFoundException;
 import com.user_service.repository.UserRepository;
 import com.user_service.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,10 +22,31 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
 
+//    public User registerUser(User user) {
+//        logger.info("Service: registerUser method call");
+//
+//        try {
+//            userRepository.save(user);
+//        } catch (DataIntegrityViolationException e) {
+//            throw new UserNotFoundException("Email is already taken");
+//        }
+//
+//        return userRepository.save(user);
+//
+//
+//    }
+
     public User registerUser(User user) {
         logger.info("Service: registerUser method call");
-        return userRepository.save(user);
+
+        try {
+            return userRepository.save(user);
+        } catch (DataIntegrityViolationException e) {
+            throw new UserNotFoundException("Email is already taken");
+        }
     }
+
+
 
     public Optional<User> getUserDetails(Long id) {
         logger.info("Service: getByUser  method call");
