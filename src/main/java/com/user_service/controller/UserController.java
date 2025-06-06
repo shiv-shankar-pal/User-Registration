@@ -40,6 +40,7 @@ public class UserController {
         return ResponseEntity.ok(registeredUser);
     }
 
+
     @GetMapping("/{id}")
     public ResponseEntity<?> getUserDetails(@PathVariable Long id, @RequestParam(defaultValue = "false") boolean includeEmail) {
         logger.info("Retriving user with id:",id);
@@ -54,60 +55,4 @@ public class UserController {
         }
     }
 
-
-
-
-
-
-
-//    @PostMapping
-//   ResponseEntity<User> createUser(@Valid @RequestBody User user){
-//        logger.info("Controller create method call");
-//
-//        User user1=  userService.createUser(user);
-//        if (user == null) {
-//            return new ResponseEntity<>(HttpStatus.NOT_FOUND); // 404 Not Found
-//        }
-//
-//        return new ResponseEntity<>(user, HttpStatus.OK); // 200 OK
-//
-//    }
-//    @PutMapping("/{id}")
-//    User updateUser(@PathVariable Long id, @Valid @RequestBody User user){
-//        logger.info("Controller put method call");
-//        return  userService.updateUser(id,user);
-//    }
-//
-//    @GetMapping("/{id}")
-//    public ResponseEntity<User> getUserById(@PathVariable Long id) {
-//        logger.info("Controller getUserById method call");
-//        User user = userService.getUserById(id);
-//
-//        if (user == null || user.getId() == null) {
-//            return new ResponseEntity<>(HttpStatus.NOT_FOUND); // 404 Not Found
-//        }
-//
-//        return new ResponseEntity<>(user, HttpStatus.OK); // 200 OK
-//    }
-//
-//
-//
-//    @GetMapping
-//    List<User>getAllUser(){
-//
-//        logger.trace("Log level: TRACE");
-//        logger.debug("Log level: DEBUG");
-//        logger.info("Log level: INFO");
-//        logger.warn("Log level: WARN");
-//        logger.error("Log level: ERROR");
-//
-//
-//        return userService.getAllUser();
-//    }
-//
-//    @DeleteMapping
-//    void deleteUser(@PathVariable Long id){
-//        logger.info("Controller deleteUser method call");
-//       userService.deleteUser(id);
-//    }
 }
